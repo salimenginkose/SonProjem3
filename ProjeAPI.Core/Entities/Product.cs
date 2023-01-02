@@ -13,6 +13,7 @@ namespace ProjeAPI.Core.Entities
         public long Stock { get; set; }
         public double Price { get; set; }
         public Company Company { get; set; }
+        public Order Order { get; set; }
         public int CompanyId { get; set; } 
     }
 }

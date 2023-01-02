@@ -79,7 +79,8 @@ namespace ProjeAPI.Repository.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -121,8 +122,8 @@ namespace ProjeAPI.Repository.Migrations
                         .IsRequired();
 
                     b.HasOne("ProjeAPI.Core.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
+                        .WithOne("Order")
+                        .HasForeignKey("ProjeAPI.Core.Entities.Order", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -145,6 +146,12 @@ namespace ProjeAPI.Repository.Migrations
             modelBuilder.Entity("ProjeAPI.Core.Entities.Company", b =>
                 {
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProjeAPI.Core.Entities.Product", b =>
+                {
+                    b.Navigation("Order")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

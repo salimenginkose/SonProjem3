@@ -2,7 +2,6 @@
 using ProjeAPI.Core.Entities;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
